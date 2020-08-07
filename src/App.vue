@@ -8,6 +8,22 @@
   </div>
 </template>
 
+<script>
+import { mapActions } from 'vuex';
+
+export default {
+  methods: {
+    ...mapActions(['setUserData', 'setAccountData']),
+  },
+  mounted() {
+    const configElement = document.getElementById('config');
+    const data = JSON.parse(configElement.innerHTML);
+    this.setUserData(data.user);
+    this.setAccountData(data.account);
+  },
+};
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
