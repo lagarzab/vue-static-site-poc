@@ -11,6 +11,20 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <!-- This is where the credit union's program can inject the data before it is rendered to the user -->
+    <script id="config" type="application/json">
+      {
+          "user": {
+            "id": "1234",
+            "name": "Test User",
+            "userName": "testuser"
+          },
+          "account": {
+            "number": "9876543210",
+            "type": "1"
+          }
+      }
+    </script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
