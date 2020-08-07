@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -28,6 +29,26 @@ export default {
   },
   computed: {
     ...mapGetters(['getUser', 'getAccount']),
+    /* This is where we could insert API information for making requests: */
+    // token: () => process.env.AUTHTOKEN,
+    // config() {
+    //   return {
+    //     headers: { Authorization: `Bearer ${this.token}` },
+    //   };
+    // },
+  },
+  mounted() {
+    const makeRequest = () => {
+      this.status = 'Awaiting response.';
+      axios.get('https://jsonplaceholder.typicode.com/posts/1')
+        .then((response) => {
+          this.status = `Looks like we got a response: ${response.data.body}`;
+          return response;
+        })
+        .then((json) => console.log(json));
+    };
+
+    setTimeout(makeRequest, 600);
   },
 };
 </script>
